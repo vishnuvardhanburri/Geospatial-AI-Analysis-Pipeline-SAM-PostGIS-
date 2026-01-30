@@ -3,7 +3,11 @@
 **(SAM + PostGIS + Deterministic Geometry Processing)**
 
 <p align="center">
-  <img src="file:///Users/vishnuvardhanburri/Downloads/geospatial_ai_architecture.svg" width="900"/>
+  <img src="geospatial_ai_architecture.svg" alt="Geospatial AI Architecture Diagram" width="900"/>
+</p>
+
+<p align="center">
+  <em>High-level architecture showing AI inference, deterministic geometry processing, and PostGIS-backed measurements.</em>
 </p>
 
 ---
