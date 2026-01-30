@@ -274,5 +274,3 @@ Each layer is independently testable and replaceable.
 If you have questions, need clarifications, or would like to move forward, I’m happy to connect as part of the **Toptal engagement process**.
 
 ---
-
-**End of README**
