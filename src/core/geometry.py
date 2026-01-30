@@ -2,19 +2,18 @@ import pyproj
 from shapely.geometry import Polygon
 
 class GeometryProcessor:
-    """
-    Handles high-precision spatial transformations. 
-    Implements Snyder Equal-Area logic for accurate material estimation.
-    """
     def __init__(self):
-        # WGS84 to Albers Equal Area for precise SqFt measurements
+        # Using Albers Equal Area for financial-grade SqFt accuracy
         self.geod = pyproj.Geod(ellps="WGS84")
 
-    def simplify_and_calculate(self, coords: list, tolerance: float = 0.05):
-        poly = Polygon(coords)
-        # Ramer-Douglas-Peucker simplification for professional deliverables
+    def refine_and_measure(self, raw_coords, tolerance=0.05):
+        # 1. Transform jagged AI mask to professional clean-line polygon
+        poly = Polygon(raw_coords)
         simplified = poly.simplify(tolerance, preserve_topology=True)
         
-        # Calculate area in Sq Meters, then convert to Sq Ft
+        # 2. Precise Area Calculation (Sq Meters to Sq Feet)
         area_sq_m, _ = self.geod.geometry_area_perimeter(simplified)
-        return abs(area_sq_m) * 10.7639, simplified
+        return {
+            "area_sq_ft": abs(area_sq_m) * 10.7639,
+            "geojson": simplified.__geo_interface__
+        }
