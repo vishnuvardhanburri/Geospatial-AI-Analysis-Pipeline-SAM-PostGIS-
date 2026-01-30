@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5  # Corrected Action
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
@@ -26,16 +26,15 @@ jobs:
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt # Requires numpy pinned < 2.0
+          pip install -r requirements.txt
 
       - name: Run Geometric Integrity Tests
         run: |
-          export PYTHONPATH=$PYTHONPATH:. # Senior path resolution
+          export PYTHONPATH=$PYTHONPATH:.
           pytest tests/test_geometry_integrity.py -v
 
       - name: Production Readiness Audit
         run: |
-          # Fails if any print statements or TODOs are found in src
-          # Ensure 'src' directory exists or adjust path to match your structure
+          # Enforces senior coding standards: no prints, no TODOs
           grep -r "print(" . --exclude-dir=tests --exclude=ci.yml && exit 1 || echo "No prints found."
           grep -r "TODO" . --exclude-dir=tests && exit 1 || echo "No TODOs found."
