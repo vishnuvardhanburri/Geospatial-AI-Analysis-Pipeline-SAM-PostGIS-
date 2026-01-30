@@ -3,7 +3,7 @@
 **(SAM + PostGIS + Deterministic Geometry Processing)**
 
 <p align="center">
-  <img src="geospatial_ai_architecture.svg" alt="Geospatial AI Architecture Diagram" width="900"/>
+  <img src="file:///Users/vishnuvardhanburri/Downloads/geospatial_ai_architecture.svg" width="900"/>
 </p>
 
 ---
